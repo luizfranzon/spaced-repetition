@@ -1,7 +1,9 @@
+import { CreateNewStudySectionModal } from "@/components/CreateNewStudySectionModal";
+
 export default function Home() {
   return (
-    <div>
-
+    <div className="w-full flex items-center justify-center">
+      
     </div>
   );
 }

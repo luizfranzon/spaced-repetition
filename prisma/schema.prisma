@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model StudySection {
+  id String @id @default(uuid())
+
+  theme       String
+  description String?
+  date        DateTime @default(now())
+  isDone      Boolean  @default(false) @map("is_done")
+  currentStep Int      @default(0)     @map("current_step")
+
+  @@map("study_sections")
+}
+
+model StudyStep {
+  id String @id @default(uuid())
+
+  stepNumber Int
+  distanceFromPrevious Int @map("distance_from_start")
+
+  @@map("study_steps")
+}
